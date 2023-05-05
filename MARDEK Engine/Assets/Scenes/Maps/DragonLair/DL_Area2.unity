@@ -15969,9 +15969,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 775768262826411160, guid: 4524198ac264da046815598c35039adc, type: 3}
+      propertyPath: PlayerPosition
+      value: 
+      objectReference: {fileID: 1620159276}
+    - target: {fileID: 775768262826411160, guid: 4524198ac264da046815598c35039adc, type: 3}
       propertyPath: areaEncounterSet
       value: 
       objectReference: {fileID: 11400000, guid: 540b9b2280941b148b37653b2df7f768, type: 2}
+    - target: {fileID: 775768262826411160, guid: 4524198ac264da046815598c35039adc, type: 3}
+      propertyPath: BlueAlertBalloonPrefab
+      value: 
+      objectReference: {fileID: 7976699827250711260, guid: a06af6cbe25b1e64a8997e36a90e227c, type: 3}
     - target: {fileID: 1967828192807274310, guid: 4524198ac264da046815598c35039adc, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -16907,6 +16915,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1150562451965924189, guid: 34e6dc5b1bafd1e46a833b0d52d5a377, type: 3}
   m_PrefabInstance: {fileID: 1615449021}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1620159276 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6130245529983910397, guid: 4524198ac264da046815598c35039adc, type: 3}
+  m_PrefabInstance: {fileID: 789882694}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1646065964
 PrefabInstance:

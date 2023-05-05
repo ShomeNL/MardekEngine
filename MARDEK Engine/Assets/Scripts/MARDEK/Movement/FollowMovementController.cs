@@ -8,6 +8,18 @@ namespace MARDEK.Movement
         [SerializeField] Movable followedMovement;
         bool shouldFollow = false;
 
+        public bool ShouldFollow
+        {
+            get 
+            {
+                return shouldFollow;
+            }
+            set 
+            {
+                shouldFollow = value;
+            }
+        }
+
         private void OnEnable()
         {
             if (followedMovement)

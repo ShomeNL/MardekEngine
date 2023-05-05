@@ -8,7 +8,6 @@ namespace MARDEK.Movement
     public class Movable : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 1f;
-
         [SerializeField] ColliderHelper _colliderHelper = null;
         [SerializeField] SpriteAnimator animator = null;
 
@@ -17,6 +16,26 @@ namespace MARDEK.Movement
         public MoveDirection currentDirection { get; private set; }
 
         Vector2 _lastPosition = Vector2.zero;
+
+        public float MovementSpeed 
+        {
+            get 
+            {
+                return movementSpeed;
+            }
+            set
+            {
+                if(value > 5)
+                {
+                    value = 5;
+                }
+                else
+                {
+                    movementSpeed = value;
+                }
+            }
+
+        }
 
         public Vector2 lastPosition
         {
@@ -142,7 +161,7 @@ namespace MARDEK.Movement
             if (animator) animator.PlayClipByMoveDirectionReference(currentDirection);
         }
 
-        void StopAnimator()
+        public void StopAnimator()
         {
             if (animator) animator.StopCurrentAnimation(1); //end with last sprite
         }

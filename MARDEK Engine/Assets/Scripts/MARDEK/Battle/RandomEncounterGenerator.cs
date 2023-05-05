@@ -9,13 +9,27 @@ namespace MARDEK.Battle
 {
     public class RandomEncounterGenerator : MonoBehaviour
     {
-        [SerializeField, HideInInspector] Movable movable;
+        [SerializeField] Movable movable;
         [SerializeField] EncounterSet areaEncounterSet = null;
         [SerializeField] int minSteps = 20;
         [SerializeField] int maxSteps = 30;
         [SerializeField] UnityEvent onTriggerBattle;
+        [SerializeField] GameObject BlueAlertBalloonPrefab;
+        [SerializeField] GameObject PlayerPosition;
+        [SerializeField] GameObject CloneBlueAlertBalloonPrefab;
         int stepsTaken = 0;
         int requiredSteps;
+
+        IEnumerator InitiateBattle()
+        {
+            CloneBlueAlertBalloonPrefab = Instantiate(BlueAlertBalloonPrefab, (PlayerPosition.transform.position + new Vector3(0, 1.25f, 0)), Quaternion.identity);
+            movable.MovementSpeed = 0;
+            movable.StopAnimator();
+            yield return new WaitForSeconds(.5f);
+            BattleManager.encounter = areaEncounterSet;
+            Debug.Log("Battle Starts!");
+            onTriggerBattle.Invoke();
+        }
 
         private void Start()
         {
@@ -37,8 +51,7 @@ namespace MARDEK.Battle
         }
         void TriggerBattle()
         {
-            BattleManager.encounter = areaEncounterSet;
-            onTriggerBattle.Invoke();
+            StartCoroutine(InitiateBattle());
         }
         void Step()
         {
@@ -49,6 +62,15 @@ namespace MARDEK.Battle
         void GenerateRequiredSteps()
         {
             requiredSteps = Random.Range(minSteps, maxSteps + 1);
+        }
+        void Update()
+        {
+            if(Input.GetKeyDown("e"))
+            {
+                StopAllCoroutines();
+                Destroy(CloneBlueAlertBalloonPrefab, 0);
+                movable.MovementSpeed = 5;
+            } 
         }
     }
 }
